@@ -8,6 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SOURCE_FILES
+	src/FileHandler.cpp
 	src/Window.cpp
 	src/RectangularWindow.cpp
 	src/HammingWindow.cpp
@@ -17,6 +18,9 @@ set(SOURCE_FILES
 set(WINDOW_TEST
 	unit-tests/window-test.cpp)
 
+set(FILEHANDLER_TEST
+	unit-tests/filehandler-test.cpp)
+
 # add the digital-filters Library
 add_library(digital-filters ${SOURCE_FILES})
 target_include_directories(digital-filters PUBLIC inc)
@@ -25,3 +29,5 @@ target_include_directories(digital-filters PUBLIC inc)
 add_executable(window-test ${WINDOW_TEST})
 target_link_libraries(window-test PRIVATE digital-filters)
 
+add_executable(filehandler-test ${FILEHANDLER_TEST})
+target_link_libraries(filehandler-test PRIVATE digital-filters)
