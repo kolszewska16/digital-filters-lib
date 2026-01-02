@@ -8,12 +8,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 set(SOURCE_FILES
+	src/BlackmanWindow.cpp
 	src/FileHandler.cpp
-	src/Window.cpp
-	src/RectangularWindow.cpp
 	src/HammingWindow.cpp
 	src/HanningWindow.cpp
-	src/BlackmanWindow.cpp)
+	src/RectangularWindow.cpp)
 
 set(WINDOW_TEST
 	unit-tests/window-test.cpp)
