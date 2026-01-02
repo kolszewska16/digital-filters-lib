@@ -12,7 +12,8 @@ set(SOURCE_FILES
 	src/FileHandler.cpp
 	src/HammingWindow.cpp
 	src/HanningWindow.cpp
-	src/RectangularWindow.cpp)
+	src/RectangularWindow.cpp
+	src/Window.cpp)
 
 set(WINDOW_TEST
 	unit-tests/window-test.cpp)
