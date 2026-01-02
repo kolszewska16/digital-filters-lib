@@ -3,6 +3,10 @@
 #include <stdexcept>
 
 namespace ko {
+	Window::Window() {
+		m_size = 0;
+	}
+
 	int Window::getSize() {
 		return m_size;
 	}
