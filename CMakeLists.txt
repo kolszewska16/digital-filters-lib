@@ -14,6 +14,7 @@ set(SOURCE_FILES
 	src/HammingWindow.cpp
 	src/HanningWindow.cpp
 	src/HighPassFIR.cpp
+	src/LowPassFIR.cpp
 	src/RectangularWindow.cpp
 	src/Window.cpp)
 
@@ -24,7 +25,7 @@ set(FILEHANDLER_TEST
 	unit-tests/filehandler-test.cpp)
 
 set(FILTER_TEST
-	unit-tests/filter-test.cpp)
+	unit-tests/FIRfilter-test.cpp)
 
 # add the digital-filters Library
 add_library(digital-filters ${SOURCE_FILES})
@@ -37,5 +38,5 @@ target_link_libraries(window-test PRIVATE digital-filters)
 add_executable(filehandler-test ${FILEHANDLER_TEST})
 target_link_libraries(filehandler-test PRIVATE digital-filters)
 
-add_executable(filter-test ${FILTER_TEST})
-target_link_libraries(filter-test PRIVATE digital-filters)
+add_executable(FIRfilter-test ${FILTER_TEST})
+target_link_libraries(FIRfilter-test PRIVATE digital-filters)
