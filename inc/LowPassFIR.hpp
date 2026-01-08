@@ -4,6 +4,9 @@
 #include <vector>
 
 namespace ko {
+	/**
+	 * @brief
+	 */
 	class LowPassFIR : public FIR {
 		public:	
 			/**

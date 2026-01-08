@@ -2,28 +2,8 @@
 #include <stdexcept>
 
 namespace ko {
-	FIR::FIR() {
-		m_order = 0;
-		m_fc = 0.0;
-		m_fs = 0.0;
-	}
-
-	FIR::FIR(int order, double fc, double fs) : m_order(order), m_fc(fc), m_fs(fs) {
-		if(order < 1) {
-			throw std::invalid_argument("Filter order must be greater or equal 1");
-		}
-		if(fc <= 0.0) {
-			throw std::invalid_argument("Cut-off frequency must be greater than 0.0");
-		}
-		if(fs <= 0.0) {
-			throw std::invalid_argument("Sampling frequency must be greater than 0.0");
-		}
-		if(fc > fs / 2) {
-			throw std::invalid_argument("Cut-off frequency can not be greater than 0.5 * fs");
-		}
-
+	FIR::FIR(int order, double fc, double fs) : Filter(order, fc, fs) {
 		m_b.resize(order + 1);
-//		m_b.assign((order + 1), 0.0);
 	}
 
 	double FIR::processSample(const double sample) {
@@ -58,60 +38,33 @@ namespace ko {
 		return output;
 	}
 
-	void FIR::setOrder(int order) {
-		if(order < 1) {
-			throw std::invalid_argument("Filter order must be greater or equal 1");
-		}
-		m_order = order;
-	}
-
-	void FIR::setCutOffFrequency(double fc) {
-		if(fc <= 0.0) {
-			throw std::invalid_argument("Cut-off frequency must be greater than 0.0");
-		}
-		m_fc = fc;
-	}
-
-	void FIR::setSamplingFrequency(double fs) {
-		if(fs <= 0.0) {
-			throw std::invalid_argument("Sampling frequency must be greater than 0.0");
-		}
-		m_fs = fs;
-	}
-
-	int FIR::getOrder() {
-		return m_order;
-	}
-
-	double FIR::getCutOffFrequency() {
-		return m_fc;
-	}
-
-	double FIR::getSamplingFrequency() {
-		return m_fs;
-	}
-
 	std::vector<double> FIR::getImpulseResponse() {
 		return m_b;
 	}
 
 	FIR operator+ (const FIR& filter1, const FIR& filter2) {
-		if((filter1.m_order != filter2.m_order) || (filter1.m_fs != filter2.m_fs)) {
-			throw std::invalid_argument("Filters' order and sampling frequency must be the same");
+		if(filter1.m_fs != filter2.m_fs) {
+			throw std::invalid_argument("Filters' sampling frequency must be the same");
 		}
 
-		FIR result(filter1.m_order, filter1.m_fc, filter1.m_fs);
+		int new_order = std::max(filter1.m_order, filter2.m_order);
+		FIR result(new_order, filter1.m_fc, filter1.m_fs);
 
-		for(int i = 0; i < filter1.m_b.size(); i++) {
-			result.m_b[i] = filter1.m_b[i] + filter2.m_b[i];
+		for(int i = 0; i < new_order; i++) {
+			if(i < filter1.m_order) {
+				result.m_b[i] += filter1.m_b[i];
+			}
+			if(i < filter2.m_order) {
+				result.m_b[i] += filter2.m_b[i];
+			}
 		}
 
 		return result;
 	}
 
 	FIR operator* (const FIR& filter1, const FIR& filter2) {
-		if((filter1.m_order != filter2.m_order) || (filter1.m_fs != filter2.m_fs)) {
-			throw std::invalid_argument("Filters' order and sampling frequency must be the same");
+		if(filter1.m_fs != filter2.m_fs) {
+			throw std::invalid_argument("Filters' sampling frequency must be the same");
 		}
 
 		int new_order = filter1.m_order + filter2.m_order;

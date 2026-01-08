@@ -4,27 +4,11 @@
 #include <deque>
 
 namespace ko {
+	/**
+	 * @brief
+	 */
 	class FIR : public Filter {
 		protected:
-			/**
-                         * @brief The order of the filter.
-                         * Represents the number of taps minus one. A higher order provides
-                         * a steeper roll-off but increases computational cost and latency.
-                         */
-			int m_order;
-			
-			/**
-                         * @brief Cut-off frequency (Hz).
-                         * The frequency at which the filter starts to attentuate the signal.
-                         */
-			double m_fc;
-
-			 /**
-                         * @brief Sampling frequency (Hz).
-                         * The frequency at which the input signal was digitized.
-                         */
-			double m_fs;
-
 			/**
 			 * @brief Numerator coefficients of the FIR filter.
 			 * These coefficients define the impulse response of the filter.
@@ -39,12 +23,12 @@ namespace ko {
 
 		public:
 			/**
-			 * @brief
-			 */
-			FIR();
-
-			/**
-			 * @brief
+			 * @brief Parametrized constructor of FIR derived class.
+			 * Initializes the filter order, cut-off frequency and sampling frequency.
+			 *
+			 * @param order	The filter order.
+			 * @param fc	Cut-off frequency.
+			 * @param fs	Sampling frequency.
 			 */
 			FIR(int order, double fc, double fs);
 
@@ -68,48 +52,6 @@ namespace ko {
 			 * @return A vector containing the filtered output data.
 			 */
 			std::vector<double> processSamples(const std::vector<double> &samples) override;
-
-			/**
-                         * @brief Sets a new filter order.
-                         *
-                         * @param order The desired filter order.
-                         */
-			void setOrder(int order);
-
-			/**
-                         * @brief Sets a new cut-off frequency.
-                         *
-                         * @param fc    Cut-off frequency in Hz.
-                         */
-			void setCutOffFrequency(double fc);
-
-			/**
-                         * @brief Sets a new sampling frequency.
-                         *
-                         * @param fs    Sampling frequency in Hz.
-                         */
-			void setSamplingFrequency(double fs);
-
-			/**
-                         * @brief Gets the current filter order.
-                         *
-                         * @return The filter order.
-                         */
-			int getOrder();
-
-			/**
-                         * @brief Gets the current cut-off frequency.
-                         *
-                         * @return Cut-off frequency in Hz.
-                         */
-			double getCutOffFrequency();
-
-			/**
-                         * @brief Gets the current sampling frequency.
-                         *
-                         * @return Sampling frequency in Hz.
-                         */
-			double getSamplingFrequency();
 
 			/**
 			 * @brief

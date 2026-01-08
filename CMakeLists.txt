@@ -10,10 +10,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(SOURCE_FILES
 	src/BlackmanWindow.cpp
 	src/FileHandler.cpp
+	src/Filter.cpp
 	src/FIR.cpp
 	src/HammingWindow.cpp
 	src/HanningWindow.cpp
+	src/HighPassButterworth.cpp
 	src/HighPassFIR.cpp
+	src/IIR.cpp
+	src/LowPassButterworth.cpp
 	src/LowPassFIR.cpp
 	src/RectangularWindow.cpp
 	src/Window.cpp)
@@ -24,8 +28,11 @@ set(WINDOW_TEST
 set(FILEHANDLER_TEST
 	unit-tests/filehandler-test.cpp)
 
-set(FILTER_TEST
+set(FIR_FILTER_TEST
 	unit-tests/FIRfilter-test.cpp)
+
+set(IIR_FILTER_TEST
+	unit-tests/IIRfilter-test.cpp)
 
 # add the digital-filters Library
 add_library(digital-filters ${SOURCE_FILES})
@@ -38,5 +45,8 @@ target_link_libraries(window-test PRIVATE digital-filters)
 add_executable(filehandler-test ${FILEHANDLER_TEST})
 target_link_libraries(filehandler-test PRIVATE digital-filters)
 
-add_executable(FIRfilter-test ${FILTER_TEST})
+add_executable(FIRfilter-test ${FIR_FILTER_TEST})
 target_link_libraries(FIRfilter-test PRIVATE digital-filters)
+
+add_executable(IIRfilter-test ${IIR_FILTER_TEST})
+target_link_libraries(IIRfilter-test PRIVATE digital-filters)
