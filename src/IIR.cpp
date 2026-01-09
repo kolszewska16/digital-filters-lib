@@ -5,23 +5,21 @@ namespace ko {
 	IIR::IIR(const int order, const double fc, const double fs) : Filter(order, fc, fs) {
 		m_x_history.resize(order + 1);
 		m_y_history.resize(order + 1);
-//		m_a.resize(order + 1);
-//		m_b.resize(order + 1);
 	}
 
 	double IIR::processSample(const double sample) {
 		int N = m_a.size();
-		for(int i = N; i > 0; i--) {
+		for(int i = N - 1; i > 0; i--) {
 			m_x_history[i] = m_x_history[i - 1];
 			m_y_history[i] = m_y_history[i - 1];
 		}
 		m_x_history[0] = sample;
 
 		double y {0.0};
-		for(int i = 0; i <= N; i++) {
+		for(int i = 0; i < N; i++) {
 			y += m_b[i] * m_x_history[i];
 		}
-		for(int i = 1; i <= N; i++) {
+		for(int i = 1; i < N; i++) {
 			y -= m_a[i] * m_y_history[i];
 		}
 		m_y_history[0] = y;
@@ -32,9 +30,9 @@ namespace ko {
 	std::vector<double> IIR::processSamples(const std::vector<double> &samples) {
 		std::vector<double> output(samples.size());
 		double y {0.0};
-		for(double sample : samples) {
-			y = processSample(sample);
-			output.push_back(y);
+		for(int i = 0; i < samples.size(); i++) {
+			y = processSample(samples[i]);
+			output[i] = y;
 		}
 
 		return output;

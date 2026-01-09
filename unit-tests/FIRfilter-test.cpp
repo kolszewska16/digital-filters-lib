@@ -102,7 +102,7 @@ int main() {
 	std::cout << "bp sum: " << bp_sum << std::endl;
 
 	std::vector<double> filtered_signal = bandpassFIR.processSamples(signal);
-	std::string filename = "../unit-tests/filtered-signal.txt";
+	std::string filename = "../unit-tests/FIR-filtered-signal.txt";
 	ko::FileHandler file;
 	file.setFilenameToWrite(filename);
 	file.writeData(filtered_signal);
