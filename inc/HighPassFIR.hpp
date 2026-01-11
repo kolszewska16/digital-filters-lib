@@ -5,7 +5,9 @@
 
 namespace ko {
 	/**
-	 * @brief
+	 * @brief High-pass FIR filter.
+	 * Class implementing a high-pass FIR filter designed using a selected window function. The
+	 * filter exhibits linear-phase characteristics.
 	 */
 	class HighPassFIR : public FIR {
 		public:
@@ -17,15 +19,13 @@ namespace ko {
 			 * @param fc	Cut-off frequency.
 			 * @param fc	Sampling frequency.
 			 */
-			HighPassFIR(int order, double fc, double fs, ko::Window &window);
+			HighPassFIR(const int order, const double fc, const double fs, ko::Window &window);
 
 			/**
 			 * @brief Calculates the FIR filter coefficients for a high-pass response.
 			 * Uses the specified parameters to design the filter impulse response.
 			 *
 			 * @param window
-			 *
-			 * @return A vector containing the designed b-coefficients.
 			 */
 			void designFilter(ko::Window &window);
 	};

@@ -3,7 +3,9 @@
 
 namespace ko {
 	/**
-	 * @brief
+	 * @brief Base class for digital filters.
+	 * Abstract base class defining a common interface for digital filters operating on
+	 * discrete-time signals.
 	 */
 	class Filter {
 		protected:
@@ -98,20 +100,20 @@ namespace ko {
 			 *
 			 * @return The filter order.
 			 */
-			int getOrder();
+			int getOrder() const;
 			
 			/**
 			 * @brief Gets the current cut-off frequency.
 			 *
 			 * @return Cut-off frequency in Hz.
 			 */
-			double getCutOffFrequency();
+			double getCutOffFrequency() const;
 			
 			/**
 			 * @brief Gets the sampling frequency.
 			 *
 			 * @return Sampling frequency in Hz.
 			 */
-			double getSamplingFrequency();
+			double getSamplingFrequency() const;
 	};
 }

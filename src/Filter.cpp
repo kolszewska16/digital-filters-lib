@@ -44,15 +44,15 @@ namespace ko {
 		m_fs = fs;
 	}
 
-	int Filter::getOrder() {
+	int Filter::getOrder() const {
 		return m_order;
 	}
 
-	double Filter::getCutOffFrequency() {
+	double Filter::getCutOffFrequency() const {
 		return m_fc;
 	}
 
-	double Filter::getSamplingFrequency() {
+	double Filter::getSamplingFrequency() const {
 		return m_fs;
 	}
 }

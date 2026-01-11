@@ -101,11 +101,11 @@ namespace ko {
 		return result;
 	}
 
-	std::vector<double> IIR::getFeedBackCoeffs() {
+	std::vector<double> IIR::getFeedBackCoeffs() const {
 		return m_a;
 	}
 
-	std::vector<double> IIR::getFeedForwardCoeffs() {
+	std::vector<double> IIR::getFeedForwardCoeffs() const {
 		return m_b;
 	}
 }

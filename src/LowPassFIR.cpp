@@ -3,7 +3,8 @@
 #include <cmath>
 
 namespace ko {
-	LowPassFIR::LowPassFIR(int order, double fc, double fs, ko::Window &window) : FIR(order, fc, fs) {
+	LowPassFIR::LowPassFIR(const int order, const double fc, const double fs, ko::Window &window)
+	: FIR(order, fc, fs) {
 		int size = order + 1;
 		window.setSize(size);
 		designFilter(window);

@@ -38,7 +38,7 @@ namespace ko {
 		return output;
 	}
 
-	std::vector<double> FIR::getImpulseResponse() {
+	std::vector<double> FIR::getImpulseResponse() const {
 		return m_b;
 	}
 

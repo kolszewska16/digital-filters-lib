@@ -5,7 +5,9 @@
 
 namespace ko {
 	/**
-	 * @brief
+	 * @brief Class for FIR filters.
+	 * Class representing finite impulse response (FIR) filters. Provides a common interface
+	 * for FIR-based filter implementation.
 	 */
 	class FIR : public Filter {
 		protected:
@@ -54,17 +56,36 @@ namespace ko {
 			std::vector<double> processSamples(const std::vector<double> &samples) override;
 
 			/**
-			 * @brief
+			 * @brief Returns the impulse response of the FIR filter.
+			 * 
+			 * @return Vector containing the impulse response samples.
 			 */
-			std::vector<double> getImpulseResponse();
+			std::vector<double> getImpulseResponse() const;
 
 			/**
-			 * @brief
+			 * @brief Adds two FIR filters.
+			 * The operator creates a new FIR filter whose impulse response is the sum of
+			 * the impulse responses of the input filters, which corresponds to a parallel
+			 * connection. Both filters must be compatible, they must have the same sampling
+			 * frequency.
+			 *
+			 * @param filter1	First FIR filter.
+			 * @param filter2	Second FIR filter.
+			 *
+			 * @return FIR filter resulting from the addition.
 			 */
 			friend FIR operator+ (const FIR& filter1, const FIR& filter2);
 
 			/**
-			 * @brief
+			 * @brief Cascades two FIR filters.
+			 * The operator creates a new FIR filter by convolving the impulse responses of
+			 * the input filters, which corresponds to a cascade connection in the time domain.
+			 * Both filters must be compatible, they must have the same sampling frequency.
+			 *
+			 * @param filter1	First FIR filter.
+			 * @param filter2	Second FIR filter.
+			 *
+			 * @return FIR filter resulting from the cascade (convolution).
 			 */
 			friend FIR operator* (const FIR& filter1, const FIR& filter2);
 	};
