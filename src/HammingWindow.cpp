@@ -1,6 +1,6 @@
 #include "HammingWindow.hpp"
 #include <stdexcept>
-#include <math.h>
+#include <cmath>
 
 namespace ko {
 	HammingWindow::HammingWindow(int size) : Window(size) {
@@ -12,7 +12,7 @@ namespace ko {
 
 	void HammingWindow::generateCoeffs() {
 		for(int i = 0; i < m_size; i++) {
-			m_coeffs[i] = 0.54 - 0.46 * cos((2 * M_PI * i) / (m_size - 1));
+			m_coeffs[i] = 0.54 - 0.46 * std::cos((2 * M_PI * i) / (m_size - 1));
 		}
 	}
 }

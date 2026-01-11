@@ -3,6 +3,11 @@
 #include <vector>
 
 namespace ko {
+	/**
+	 * @brief Input/output data handler.
+	 * Class responsible for handling input and output data operations, including reading signal
+	 * data from file and saving processed signal.
+	 */
 	class FileHandler {
 		private:
 			/**
@@ -39,8 +44,7 @@ namespace ko {
 			 * @param read_file	Path to the input file.
 			 * @param write_file	Path to the output file.
 			 */
-			FileHandler(std::string read_file, std::string write_file) : 
-				m_read_filename(read_file), m_write_filename(write_file) {}
+			FileHandler(std::string read_file, std::string write_file);
 			
 			/**
 			 * @brief Destructor.
@@ -60,7 +64,7 @@ namespace ko {
 			 *
 			 * @param data	A vector of data to be saved.
 			 */
-			void writeData(const std::vector<double> data);
+			void writeData(const std::vector<double> &data);
 
 			/**
 			 * @brief Sets the filename for read operation.

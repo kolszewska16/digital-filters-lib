@@ -7,12 +7,28 @@ namespace ko {
 		m_size = 0;
 	}
 
+	Window::Window(int size) : m_size(size), m_coeffs(size) {}
+
+	void Window::setSize(const int size) {
+		if(size <= 0) {
+			throw std::invalid_argument("Window size must be greater than 0");
+		}
+		m_size = size;
+	}
+
 	int Window::getSize() {
 		return m_size;
 	}
 
 	std::vector<double> Window::getCoeffs() {
 		return m_coeffs;
+	}
+
+	void Window::applyWindow(std::vector<double> &samples) {
+		int N = samples.size();
+		for(int i = 0; i < N; i++) {
+			samples[i] *= m_coeffs[i];
+		}
 	}
 
 	std::vector<double> operator* (const Window &w, const std::vector<double> &signal) {
