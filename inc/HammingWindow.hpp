@@ -2,11 +2,13 @@
 #include "Window.hpp"
 
 namespace ko {
+	/**
+	 * @brief Class implementing the Hamming window.
+	 */
 	class HammingWindow : public Window {
 		public:
 			/**
 			 * @brief Parametrized constructor of HammingWindow class.
-			 * 
 			 * Initializes HammingWindow object based on the input parameter.
 			 *
 			 * @param size	Length of the window.
@@ -15,7 +17,6 @@ namespace ko {
 			
 			/**
 			 * @brief Generates Hamming window coefficients.
-			 * 
 			 * The function calculates coefficients based on the length of the window.
 			 * Computed coefficients are stored in the base Window class member vector `m_coeffs`.
 			 */

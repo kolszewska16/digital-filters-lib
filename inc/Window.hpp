@@ -1,7 +1,14 @@
 #pragma once
 #include <vector>
+#include <stdexcept>
 
 namespace ko {
+	/**
+	 * @brief Base class for window functions.
+	 *
+	 * Abstract base class defining a common interface for window functions used in signal
+	 * processing and filter design.
+	 */
 	class Window {
 		protected:
 			/**
@@ -10,7 +17,7 @@ namespace ko {
 			int m_size;
 			
 			/*
-			 * @brief stores calculated window coefficients
+			 * @brief Stores calculated window coefficients
 			 */
 			std::vector<double> m_coeffs;
 
@@ -27,13 +34,25 @@ namespace ko {
 			 *
 			 * @param size	Length of the window (must be a positive integer).
 			 */
-			Window(int size) : m_size(size), m_coeffs(size) {}
+			Window(int size);
 			
 			/**
 			 * @brief Virtual destructor of Window base class.
 			 * Ensures proper cleanup of derived window classes.
 			 */
 			virtual ~Window() {}
+
+			/**
+			 * @brief Sets a new size of the window.
+			 *
+			 * @param size	Window size.
+			 */
+			void setSize(const int size) {
+				if(size <= 0) {
+					throw std::invalid_argument("Window size must be greater than 0");
+				}
+				m_size = size;
+			}
 
 			/**
 			 * @brief Gets the current size of the window.
@@ -56,6 +75,15 @@ namespace ko {
 			 */
 			virtual void generateCoeffs() = 0;
 
+			/**
+			 * @brief Applies a window function to the signal samples.
+			 * The function modifies the provided vector of samples in-place by multiplying
+			 * each sample by the corresponding window coefficient.
+			 *
+			 * @param samples	Vector of signal samples to which the window is applied.
+			 */
+			void applyWindow(std::vector<double> &samples);
+			
 			/**
 			 * @brief Overloaded multiplication operator to apply the window to a signal.
 			 * Performs point-by-point multiplication between the window coefficients and
