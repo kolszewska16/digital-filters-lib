@@ -12,7 +12,7 @@ namespace ko {
 	}
 
 	FileHandler::FileHandler(std::string read_file, std::string write_file) :
-		m_read_filename(read_file), m_write_file(write_file) {}
+		m_read_filename(read_file), m_write_filename(write_file) {}
 
 	void FileHandler::readData() {
 		std::fstream file;
