@@ -9,6 +9,13 @@ namespace ko {
 
 	Window::Window(int size) : m_size(size), m_coeffs(size) {}
 
+	void Window::setSize(const int size) {
+		if(size <= 0) {
+			throw std::invalid_argument("Window size must be greater than 0");
+		}
+		m_size = size;
+	}
+
 	int Window::getSize() {
 		return m_size;
 	}

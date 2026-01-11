@@ -47,12 +47,7 @@ namespace ko {
 			 *
 			 * @param size	Window size.
 			 */
-			void setSize(const int size) {
-				if(size <= 0) {
-					throw std::invalid_argument("Window size must be greater than 0");
-				}
-				m_size = size;
-			}
+			void setSize(const int size);
 
 			/**
 			 * @brief Gets the current size of the window.
