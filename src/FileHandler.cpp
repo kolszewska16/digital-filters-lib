@@ -1,8 +1,6 @@
 #include "FileHandler.hpp"
 #include <fstream>
 #include <sstream>
-#include <string>
-#include <vector>
 #include <stdexcept>
 
 namespace ko {
@@ -12,6 +10,9 @@ namespace ko {
 		m_read_data = {0.0};
 		m_write_data = {0.0};
 	}
+
+	FileHandler::FileHandler(std::string read_file, std::string write_file) :
+		m_read_filename(read_file), m_write_file(write_file) {}
 
 	void FileHandler::readData() {
 		std::fstream file;
@@ -41,7 +42,7 @@ namespace ko {
 		file.close();
 	}
 
-	void FileHandler::writeData(const std::vector<double> data) {
+	void FileHandler::writeData(const std::vector<double> &data) {
 		std::fstream file;
 		file.open(m_write_filename, std::ios::out);
 		if(file.good() != true) {
@@ -54,10 +55,16 @@ namespace ko {
 	}
 
 	void FileHandler::setFilenameToRead(std::string filename) {
+		if(filename.empty()) {
+			throw std::invalid_argument("Filename can not be empty");
+		}
 		m_read_filename = filename;
 	}
 	
 	void FileHandler::setFilenameToWrite(std::string filename) {
+		if(filename.empty()) {
+			throw std::invalid_argument("Filename can not be empty");
+		}
 		m_write_filename = filename;
 	}
 
