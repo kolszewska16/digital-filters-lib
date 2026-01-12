@@ -34,6 +34,12 @@ set(FIR_FILTER_TEST
 set(IIR_FILTER_TEST
 	unit-tests/IIRfilter-test.cpp)
 
+set(SIGNAL_GENERATION
+	example/generate-signal.cpp)
+
+set(MAIN
+	example/main.cpp)
+
 # add the digital-filters Library
 add_library(digital-filters ${SOURCE_FILES})
 target_include_directories(digital-filters PUBLIC inc)
@@ -50,3 +56,9 @@ target_link_libraries(FIRfilter-test PRIVATE digital-filters)
 
 add_executable(IIRfilter-test ${IIR_FILTER_TEST})
 target_link_libraries(IIRfilter-test PRIVATE digital-filters)
+
+add_executable(generate-signal ${SIGNAL_GENERATION})
+target_link_libraries(generate-signal PRIVATE digital-filters)
+
+add_executable(main ${MAIN})
+target_link_libraries(main PRIVATE digital-filters)
