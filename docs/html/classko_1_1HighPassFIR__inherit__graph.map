@@ -1,0 +1,7 @@
+<map id="ko::HighPassFIR" name="ko::HighPassFIR">
+<area shape="rect" id="Node000001" title="High&#45;pass FIR filter. Class implementing a high&#45;pass FIR filter designed using a selected window func..." alt="" coords="5,152,131,177"/>
+<area shape="rect" id="Node000002" href="$classko_1_1FIR.html" title="Class for FIR filters. Class representing finite impulse response (FIR) filters. Provides a common in..." alt="" coords="35,79,101,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="71,118,71,152,65,152,65,118"/>
+<area shape="rect" id="Node000003" href="$classko_1_1Filter.html" title="Base class for digital filters. Abstract base class defining a common interface for digital filters o..." alt="" coords="29,5,107,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="71,44,71,79,65,79,65,44"/>
+</map>

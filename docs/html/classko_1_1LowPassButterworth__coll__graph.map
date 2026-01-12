@@ -1,0 +1,7 @@
+<map id="ko::LowPassButterworth" name="ko::LowPassButterworth">
+<area shape="rect" id="Node000001" title="Low&#45;pass Butterworth IIR filter. Class implementing a low&#45;pass Butterworth filter with an infinite im..." alt="" coords="5,152,183,177"/>
+<area shape="rect" id="Node000002" href="$classko_1_1IIR.html" title="Class for IIR filters. Class representing infinite impulse response (IIR) filters,..." alt="" coords="63,79,125,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,118,97,152,91,152,91,118"/>
+<area shape="rect" id="Node000003" href="$classko_1_1Filter.html" title="Base class for digital filters. Abstract base class defining a common interface for digital filters o..." alt="" coords="55,5,133,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,44,97,79,91,79,91,44"/>
+</map>

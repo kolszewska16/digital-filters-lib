@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classko_1_1Window.html" title="Base class for window functions." alt="" coords="5,80,103,105"/>
+<area shape="rect" id="Node000001" href="$classko_1_1BlackmanWindow.html" title=" " alt="" coords="157,5,319,31"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="87,71,150,40,183,28,185,33,152,44,89,75"/>
+<area shape="rect" id="Node000002" href="$classko_1_1HammingWindow.html" title="Class implementing the Hamming window." alt="" coords="157,55,319,80"/>
+<area shape="poly" id="edge8_Node000000_Node000002" title=" " alt="" coords="116,82,157,76,157,81,117,87"/>
+<area shape="rect" id="Node000003" href="$classko_1_1HanningWindow.html" title="Class implementing the Hanning window." alt="" coords="163,104,313,129"/>
+<area shape="poly" id="edge9_Node000000_Node000003" title=" " alt="" coords="117,98,163,104,162,109,116,103"/>
+<area shape="rect" id="Node000004" href="$classko_1_1RectangularWindow.html" title="Class implementing Rectangular window." alt="" coords="151,153,325,179"/>
+<area shape="poly" id="edge10_Node000000_Node000004" title=" " alt="" coords="91,110,152,138,189,151,187,156,150,143,89,114"/>
+</map>

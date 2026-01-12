@@ -1,0 +1,5 @@
+<map id="ko::IIR" name="ko::IIR">
+<area shape="rect" id="Node000001" title="Class for IIR filters. Class representing infinite impulse response (IIR) filters,..." alt="" coords="13,79,76,104"/>
+<area shape="rect" id="Node000002" href="$classko_1_1Filter.html" title="Base class for digital filters. Abstract base class defining a common interface for digital filters o..." alt="" coords="5,5,84,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="47,44,47,79,42,79,42,44"/>
+</map>
