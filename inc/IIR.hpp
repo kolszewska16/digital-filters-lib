@@ -47,7 +47,15 @@ namespace ko {
 			 * @param fs	Sampling frequency in Hz.
 			 */
 			IIR(const int order, const double fc, const double fs);
-			
+		
+			/**
+			 * @brief Resets both input and output buffers of the IIR filter.
+			 * Clears the history of input samples and feedback output samples. This is
+			 * critical for ensuring stability and preventing artifacts or oscillations
+			 * from previous signal states.
+			 */
+			void reset() override;
+
 			/**
 			 * @brief Processes a single input sample.
 			 * Applies the IIR filter difference equation to the input sample and returns the

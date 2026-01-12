@@ -6,6 +6,12 @@ namespace ko {
 		m_b.resize(order + 1);
 	}
 
+	void FIR::reset() {
+		for(int i = 0; i < m_input_buff.size(); i++) {
+			m_input_buff[i] = 0.0;
+		}
+	}
+
 	double FIR::processSample(const double sample) {
 		m_input_buff.push_front(sample);
 

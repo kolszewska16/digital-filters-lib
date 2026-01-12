@@ -46,6 +46,14 @@ namespace ko {
 			double processSample(const double sample) override;
 
 			/**
+			 * @brief Resets the FIR filter delay line.
+			 * Fills the input sample buffer with zeros. Since FIR filters do not have
+			 * feedback, this operation completely removes the influence of any previously
+			 * processed signals.
+			 */
+			void reset() override;
+
+			/**
 			 * @brief Processes an entire vector of samples.
 			 * Iteratively applies the FIR algorithm to each sample in the input vector.
 			 *

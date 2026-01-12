@@ -53,6 +53,14 @@ namespace ko {
 			virtual ~Filter() {}
 
 			/**
+			 * @brief Resets the internal state of the filter.
+			 * This is a pure virtual function that clears delay lines and internal buffers.
+			 * After calling this method, the filter should behave as if it has not processed
+			 * any samples yet.
+			 */
+			virtual void reset() = 0;
+			
+			/**
 			 * @brief Processes a single input sample.
 			 * This is a pure virtual function. It must be implemented by specific filter types
 			 * (e.g., LowPass) to apply the filtering algorithm.

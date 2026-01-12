@@ -27,6 +27,15 @@ namespace ko {
 		return y;
 	}
 
+	void IIR::reset() {
+		for(int i = 0; i < m_x_history.size(); i++) {
+			m_x_history[i] = 0.0;
+		}
+		for(int i = 0; i < m_y_history.size(); i++) {
+			m_y_history[i] = 0.0;
+		}
+	}
+
 	std::vector<double> IIR::processSamples(const std::vector<double> &samples) {
 		std::vector<double> output(samples.size());
 		double y {0.0};
