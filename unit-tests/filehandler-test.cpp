@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <math.h>
+#include <cmath>
 #include "FileHandler.hpp"
 #include "HammingWindow.hpp"
 
@@ -10,7 +10,7 @@ void generateSine(const int freq, const int fs, const int N) {
 	
 	for(int i = 0; i < N; i++) {
 		double t = (double)i / fs;
-		signal[i] = sin(2 * M_PI * freq * t);
+		signal[i] = std::sin(2 * M_PI * freq * t);
 	}
 
 	std::string write_file = "../unit-tests/signal_data.txt";

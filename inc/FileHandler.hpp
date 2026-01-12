@@ -44,7 +44,7 @@ namespace ko {
 			 * @param read_file	Path to the input file.
 			 * @param write_file	Path to the output file.
 			 */
-			FileHandler(std::string read_file, std::string write_file);
+			FileHandler(const std::string read_file, const std::string write_file);
 			
 			/**
 			 * @brief Destructor.

@@ -28,6 +28,10 @@ namespace ko {
 	}
 
 	std::vector<double> FIR::processSamples(const std::vector<double> &samples) {
+		if(m_input_buff.size() < m_b.size()) {
+			m_input_buff.assign(m_b.size(), 0.0);
+		}
+
 		std::vector<double> output(samples.size());
 		for(int i = 0; i < samples.size(); i++) {
 			m_input_buff.push_front(samples[i]);

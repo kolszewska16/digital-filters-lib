@@ -11,8 +11,12 @@ namespace ko {
 		m_write_data = {0.0};
 	}
 
-	FileHandler::FileHandler(std::string read_file, std::string write_file) :
-		m_read_filename(read_file), m_write_filename(write_file) {}
+	FileHandler::FileHandler(const std::string read_file, const std::string write_file)
+	:m_read_filename(read_file), m_write_filename(write_file) {
+		if(read_file.empty() || write_file.empty()) {
+			throw std::invalid_argument("Filename can not be empty");
+		}
+	}
 
 	void FileHandler::readData() {
 		std::fstream file;
@@ -54,14 +58,14 @@ namespace ko {
 		file.close();
 	}
 
-	void FileHandler::setFilenameToRead(std::string filename) {
+	void FileHandler::setFilenameToRead(const std::string filename) {
 		if(filename.empty()) {
 			throw std::invalid_argument("Filename can not be empty");
 		}
 		m_read_filename = filename;
 	}
 	
-	void FileHandler::setFilenameToWrite(std::string filename) {
+	void FileHandler::setFilenameToWrite(const std::string filename) {
 		if(filename.empty()) {
 			throw std::invalid_argument("Filename can not be empty");
 		}
